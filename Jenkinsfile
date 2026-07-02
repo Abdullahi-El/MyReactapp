@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -21,11 +20,9 @@ pipeline {
             }
         }
 
-        stage('Deploy to IIS') {
+        stage('Deploy to GitHub Pages') {
             steps {
-                bat '''
-                xcopy dist C:\\inetpub\\wwwroot /E /I /Y
-                '''
+                bat 'npm run deploy'
             }
         }
     }
